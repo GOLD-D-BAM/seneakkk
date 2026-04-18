@@ -4,11 +4,18 @@
 
 // ── Keyboard ──────────────────────────────────────────────────────────────
 
-var KEY_MAP = { 37: 'left', 38: 'up', 39: 'right', 40: 'down' };
+const KEY_MAP = {
+  ArrowLeft: 'left',  a: 'left',
+  ArrowUp: 'up',      w: 'up',
+  ArrowRight: 'right',d: 'right',
+  ArrowDown: 'down',  s: 'down'
+};
 
 document.addEventListener('keydown', function(e) {
-  var action = KEY_MAP[e.keyCode];
+  const key = e.key.toLowerCase(); // garante que W = w
+  const action = KEY_MAP[key];
   if (!action) return;
+
   e.preventDefault();
 
   if (phase !== 'running') { start(); return; }
